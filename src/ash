@@ -4,7 +4,6 @@
 # @author: Hubert The Elephant <hubert@creakiwi.com>
 # @author: Alexandre ANDRE <alexandre@creakiwi.com>
 
-
 ################
 # REQUIREMENTS #
 ################
@@ -29,7 +28,7 @@ check_bins()
 ################
 
 # usage: exit_error [error_code [error_msg]]
-function exit_error()
+exit_error()
 {
 	if [ ${#} -eq 2 ]
 	then
@@ -45,7 +44,7 @@ function exit_error()
 }
 
 # usage: exit_success
-function exit_success()
+exit_success()
 {
 	exit 0
 }
@@ -111,7 +110,24 @@ is_readable()
 # usage: lowercase string
 lowercase()
 {
-	lowercase_r=`echo ${1} | awk '{print tolower($0)}'`
+	lowercase_r=`echo ${1} | awk '{ print tolower($0) }'`
+}
+
+# usage: str_replace occurrence substitution string [max_occurrences]
+str_replace()
+{
+    if [ ${#} -eq 4 ]
+    then
+        str_replace_r=${3}
+        i=0
+        while [ ${i} -lt ${4} ]
+        do
+            str_replace_r=`echo ${str_replace_r} | awk '{ sub(/'${1}'/, "'${2}'"); print }'`
+            i=`expr ${i} + 1`
+        done
+    else
+        str_replace_r=`echo ${3} | awk '{ gsub(/'${1}'/, "'${2}'"); print }'`
+    fi
 }
 
 check_bins
