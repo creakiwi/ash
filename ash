@@ -1,6 +1,6 @@
-#/bin/sh
+#!/bin/sh
 
-# sh-std : Contains oftenly used shell functions
+# ash : Contains oftenly used shell functions
 # @author: Hubert The Elephant <hubert@creakiwi.com>
 # @author: Alexandre ANDRE <alexandre@creakiwi.com>
 
@@ -18,6 +18,7 @@ check_bin()
 	fi
 }
 
+# usage: check_bins
 check_bins()
 {
 	check_bin "awk"
@@ -53,6 +54,7 @@ function exit_success()
 # FILES METHODS #
 #################
 
+# usage: file_exists file
 file_exists()
 {
 	file_exists_r=0
@@ -62,6 +64,7 @@ file_exists()
 	fi
 }
 
+# usage: is_file file
 is_file()
 {
 	is_file_r=0
@@ -71,6 +74,7 @@ is_file()
 	fi
 }
 
+# usage: is_dir directory
 is_dir()
 {
 	is_dir_r=0
@@ -80,6 +84,7 @@ is_dir()
 	fi
 }
 
+# usage: is_writable path
 is_writable()
 {
 	is_writable_r=0
@@ -89,6 +94,7 @@ is_writable()
 	fi
 }
 
+# usage: is_readable path
 is_readable()
 {
 	is_readable_r=0
@@ -102,6 +108,7 @@ is_readable()
 # STRING METHODS #
 ##################
 
+# usage: lowercase string
 lowercase()
 {
 	lowercase_r=`echo ${1} | awk '{print tolower($0)}'`
